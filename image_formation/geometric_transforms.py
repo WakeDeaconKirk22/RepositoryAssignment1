@@ -17,10 +17,10 @@ dst = cv.warpAffine(img,M,(cols,rows))
 # Rotate by 18 degrees around the center
 M = cv.getRotationMatrix2D((cols/2,rows/2),16,.63) 
 rotation = cv.warpAffine(img,M,(cols  ,rows ))
-## Perform a shear
+## Perform a skew in X direction
 skew_X= np.float32([[1, .38, 0], [0, .95, 0]])
 skew_img = cv.warpAffine(rotation,skew_X,(cols,rows))
-## peform another shear 
+## peform a skew in Y direction
 skew_Y = np.float32([[1, 0, 0], [1.1, 1, 0]])
 M_2 = cv.warpAffine(skew_img,skew_Y,(cols * 2,rows * 2))
 
