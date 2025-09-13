@@ -13,7 +13,8 @@ reverse engineered a series of 2d transformations to approximate a given transfo
 
 2.)
 Output Image:
-<img width="1440" height="765" alt="Thin Lens Equation" src="https://github.com/user-attachments/assets/8363cd11-b2a1-4eb4-9a5d-866f3bd3725c" />
+<img width="1000" height="600" alt="Thin_Lens_Equation" src="https://github.com/user-attachments/assets/15982930-ed01-4863-8aaa-752ffcca397d" />
+
 
 Exercise 1 plot the image distance as a function of object for various focal lengths using the thin lens equation.
 Exercise 2 calculates aperture diameters required to achieve specific f number various real-world lenses.In this exercise i could visually see how image distance behaves near the focal length and this helped me better understand how my Canon Rebel XS hlens handles focusing. Additionally this gave me a clear sense of how f number affects exposure and depth of field. 
