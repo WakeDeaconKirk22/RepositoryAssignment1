@@ -5,10 +5,21 @@ from calulate_gradient import calculate_gradient
 
 def directional_edge_detector(img, angle =45, tolerance=5 , threshold =100):
      grad_magnitude, grad_angle = calculate_gradient(img)
-     lower = angle - tolerance
-     upper = angle + tolerance
+     
 
-     mask = (grad_magnitude >= threshold) & ((grad_angle >= lower) & (grad_angle <= upper))
+     grad_angle = np.degrees(grad_angle)
+     grad_angle = (grad_angle + 180) % 180
+     
+
+     lower = (angle - tolerance) % 180
+     upper = (angle + tolerance) % 180
+
+     
+     if lower < upper:
+           mask = (grad_angle >= lower) & (grad_angle <= upper) & (grad_magnitude >= threshold)
+     else:
+               mask = (grad_angle >= lower) | (grad_angle <= upper) & (grad_magnitude >= threshold)
+
 
      edge_direction = np.zeros_like(grad_magnitude)
      edge_direction[mask] = 255
@@ -25,7 +36,7 @@ def directional_edge_detector(img, angle =45, tolerance=5 , threshold =100):
 
 img = cv2.imread("images/building.jpg", cv2.IMREAD_GRAYSCALE)  
 
-dir_map = directional_edge_detector(img, angle=45, tolerance=10, threshold=50)
+dir_map = directional_edge_detector(img, angle=45, tolerance=40, threshold=50)
 edges_canny = cv2.Canny(img, 100, 200)
 
 
