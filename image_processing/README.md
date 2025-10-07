@@ -45,6 +45,7 @@ signal?:To find the true shape of a signal without distortion the Nyquist Shanno
 What should be done to minimize error?:
 To minimize error increasng the sampling frequency and increasing the number of bits could help minimize error
 
+<<<<<<< HEAD:README.md
 4.
 Output Image:
 <img width="1200" height="600" alt="Noisy Signal and Quantization" src="https://github.com/user-attachments/assets/75379b74-fb78-469f-99d4-c21c2d00d06a" />
@@ -62,3 +63,25 @@ To minimize error increasng the sampling frequency and increasing the number of 
 =======
 4. Simulated real world sensor noise by adding Gaussian not to sinusodial signal. This helped understand how small amounts of noise can impact digital signals. I think the addition of Gaussian noise gives me more idea how thermal flucations, electronic interferene and cause randomness into the sensor data. Also this helped understand how noise distorts the signal shape which also make features harder to interpret.
 >>>>>>> ac2e3d5 (Edited lens_aperture_params.py to fix bug)
+=======
+4. Simulated real world sensor noise by adding Gaussian not to sinusodial signal. This helped understand how small amounts of noise can impact digital signals. I think the addition of Gaussian noise gives me more idea how thermal flucations, electronic interferene and cause randomness into the sensor data. Also this helped understand how noise distorts the signal shape which also make features harder to interpret.
+
+
+
+##RepiositoryAssignment2
+
+1.) For Exercise 1 we peformed techniques to strech and redistribute pixels intensitities to enhance the image. The first function I was able to learn about how point wise operations apply here it transform each pixels intensity values independenlty of its neighbors. In the next function I also learned how to calculate for histogram and how linearity is applied to histogram equalization by distrubuting intensity values linearly similar to contrast streching. When applied I noticed the outputs were similar. 
+
+
+
+2.) For Excercise 2 I implemneted median filter and the fundamental operator for edge detection. I learned here the difference between linear functions vs non linear functions. For example the median function sorts and selects a middle value from the pixel window while a linear function sums the pixel values. I also found that a median filter gets rid of salt and pepper noise really well compared to the gaussian filter. I also found that median filter performs better because it is more resistant to outliers than a linear filter because linear filters are easily skewed by outlier pixels. 
+"What is the effect of median filtering on the calculation of gradient magnitude of an
+image corrupted by salt-and-pepper noise? Use your code to answer this question" . To answer this the gradient magnitude measures changes in intensity so if the image is noisey it would cause false large gradients. When applying the median filter is applied as mentioned before it removes outliers which reduces the influence of gradient magnitude calculation.
+
+
+
+3.) For exercise three we explored how to extend the gradient direction. For sobel edge detector I found it produeces strong edges while directional edge detects edges in a specfic orientation. 
+
+
+
+>>>>>>> ffa19bf (Added image processing scripts and sample images):image_processing/README.md
