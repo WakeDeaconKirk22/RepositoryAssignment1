@@ -4,14 +4,18 @@ Transparency : Portions of the code was generated with Copilot then modified by 
 
 
 ## PART 1  Blob detection 
+
 After visualizing the detected SIFT keypoints, i observed that larger circles were drawn around larger blobs while smaller circle were drawn around smaller features. I did find that some keypoints were missing in low contrast region where intensity changes were minimal. Also found random or incorrect keypoints. This shows SIFT DoG is good for scaled but it could be improved by a threshold .
+
+
 Image:
 <img width="315" height="409" alt="Part1" src="https://github.com/user-attachments/assets/f8945e86-c353-4e2c-b7bd-e60ed35233cc" />
 
 
 
 ## PART 2 Tuning 
-This i found out what parameters such as contrast threshold,sigma and edge threshold did for blob detection and also the correct ranges for each of these. Contrast threshold filters out weak features in low contrast regions a lower value (0.1) detects more keypoints while higher value detects fewer. edge threshold filters out edge like feature. A higher value allows more edge like features to be detected while a lower value(5) suppresses them. Sigma controls the amount of gaussian blur applied to the image at the first octabe. This affects the scale at which features are detected. Overall the paramets control how the SIFT filters improving from the issues of part 1 such as keypoints missing or errors in keypoints.
+
+This I found out what parameters such as contrast threshold,sigma and edge threshold did for blob detection and also the correct ranges for each of these. Contrast threshold filters out weak features in low contrast regions a lower value (0.1) detects more keypoints while higher value detects fewer. edge threshold filters out edge like feature. A higher value allows more edge like features to be detected while a lower value(5) suppresses them. Sigma controls the amount of gaussian blur applied to the image at the first octabe. This affects the scale at which features are detected. Overall the paramets control how the SIFT filters improving from the issues of part 1 such as keypoints missing or errors in keypoints.
 
 Image:
 <img width="315" height="409" alt="Part2" src="https://github.com/user-attachments/assets/c162c8b1-0527-4f4c-aa00-97796f93416f" />
@@ -32,7 +36,9 @@ Chat Gpt provided this as an example of what an SIFT descriptor may look like:
 
 This describe the image region around a keypoint. This is where gradient direction and magnitude of all pixels and measured it is then grouped into 8 bins based on it orientation. The high values in 90 degrees suggest strong vertical edges, 0 degreesindicate horizontal edges while a mix of bins suggest corner or textured regions. 
 
-With my histogram it shows a part of the 4x4 subregions along with the height of the bars and how promient certain edge directions are. The histogram has multiple high values in each bin suggest this might be a textured region. 
+With my histogram it shows a part of the 4x4 subregions along with the height of the bars and how promient certain edge directions are. The histogram has multiple high values in each bin which suggests this might be a textured region. 
+
+
 
 Image: 
 
@@ -44,7 +50,11 @@ Histogram:
 
 
 # PART 4 Feature Matching
-For this i just i did a transformation with rotation around 30 and found 50 best matches. Using the transformed image and the orignal i detected SIFT keypints and computed their descriptors for both images. Then I employed BF matcher to find the best matches between descriptors from the original and transformed images. Through this I found that most matched keypoints correspond to the same physical features despite rotation being peformed. 
+
+For this i did a transformation with rotation around 30 and found 50 best matches. Using the transformed image and the orignal i detected SIFT keypints and computed their descriptors for both images. Then I employed BF matcher to find the best matches between descriptors from the original and transformed images. Through this I found that most matched keypoints correspond to the same physical features despite rotation being peformed. This showed how effective SIFT is. 
+
+
+
 
 Image: 
 
